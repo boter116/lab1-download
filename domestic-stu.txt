@@ -1,0 +1,3 @@
+FirstName,LastName,Province,CGPA,ResearchScore
+Mary,White,BC,4,85
+Mike,Hwang,ON,3.7,90
