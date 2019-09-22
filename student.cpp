@@ -24,7 +24,9 @@ Student::Student(string FirstName, string LastName, float Cgpa, int ResearchScor
 Student::Student() : firstName(NULL), lastName(NULL), cgpa(0), researchScore(0), studentId(0) {/*intentionally empty*/};
 
 DomesticStudent::DomesticStudent(string FirstName, string LastName, string Province, float Cgpa, int ResearchScore, int StudentId)
-: Student()
+: Student(FirstName, LastName, Cgpa, ResearchScore, StudentId)
 {
+    province = Province;
+};
 
-}
+DomesticStudent::DomesticStudent() : Student(NULL, NULL, 0, 0, 0), province(NULL) { /*intentionally empty*/ };
