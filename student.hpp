@@ -7,6 +7,7 @@ class Student
     public:
     Student(string FirstName, string LastName, float Cgpa, int ResearchScore, int StudentId);
     Student();
+    void set(string FirstName, string LastName, float Cgpa, int ResearchScore, int StudentId);
     void set(float Cgpa);
     string getFirstName();
     string getLastName();
@@ -27,35 +28,37 @@ class DomesticStudent : public Student
     DomesticStudent(string FirstName, string LastName, string Province, float Cgpa, int ResearchScore, int StudentId);
     DomesticStudent();
     void set(string FirstName, string LastName, string Province, float Cgpa, int ResearchScore, int StudentId);
+    string getProvince();
     private:
     string province;
 };
 
-
 class ToeflScore
 {
     public:
-    ToeflScore(int reading, int listening, int speaking, int writing);
+    ToeflScore(int Reading, int Listening, int Speaking, int Writing);
     ToeflScore();
-    void set(int reading, int listening, int speaking, int writing);
+    void set(int Reading, int Listening, int Speaking, int Writing);
     int getReading();
     int getListening();
     int getSpeaking();
     int getWriting();
     private:
-    void addScores();
+    int addScores();
     int reading;
     int listening;
     int speaking;
     int writing;
 };
 
-class InternationalStudent : public DomesticStudent
+class InternationalStudent : public Student
 {
     public:
     InternationalStudent(string FirstName, string LastName, string Country, float Cgpa, int ResearchScore, ToeflScore TOEFLScore, int StudentId);
     InternationalStudent();
-    void set(string FirstName, string LastName, string Country, float Cgpa, int ResearchScore, int StudentId, ToeflScore TOEFLScore);
+    void set(string FirstName, string LastName, string Country, float Cgpa, int ResearchScore, ToeflScore TOEFLScore, int StudentId);
+    string getCountry();
+    ToeflScore getToeflScore();
     private:
     string country;
     ToeflScore toeflScore;
