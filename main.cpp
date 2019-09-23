@@ -89,7 +89,8 @@ int main(){
   
   InternationalStudent I_Student[2];
   stu_count = 0;
-
+  i = 0;
+  
   while(getline(internationalFile, line))
   {
     istringstream ss(line);
