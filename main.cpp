@@ -33,6 +33,9 @@ int main(){
    *print the object content to the screen
    */
   int stu_count = 1;
+  int studentNumber = 20200000;
+  int i = 0;
+  DomesticStudent D_Student[2];
   while( getline(domesticFile, line) ) {
     /*process each line, get each field separated by a comma.
      *We use istringstream to handle it.
@@ -68,12 +71,76 @@ int main(){
 	 << lastName << " from " << province << " province has cgpa of "
 	 << cgpa << ", and research score of " << researchScore << endl;
 
-    stu_count++;
-  }
+    D_Student[i].set(firstName, lastName, province, cgpa, researchScore, studentNumber);
 
+    studentNumber++;
+    stu_count++;
+    i++;
+  }
   //close your file
   domesticFile.close();
 
+  ifstream internationalFile("international-stu.txt");
+  if(!internationalFile.is_open())
+  {
+    cout << "Unable to open file international-stu.txt" << endl;
+    return -1;
+  }
+  
+  InternationalStudent I_Student[2];
+  stu_count = 0;
+
+  while(getline(internationalFile, line))
+  {
+    istringstream ss(line);
+
+    string firstName, lastName, country, s_cgpa, s_researchScore, s_reading, s_listening, s_speaking, s_writing;
+    float cgpa;
+    int researchScore, reading, listening, speaking, writing;
+    ToeflScore TOEFLScore;
+
+    //get firstName separated by comma
+    getline(ss, firstName, ',');
+
+    //get lastName separated by comma
+    getline(ss, lastName, ',');
+
+    //get province separated by comma
+    getline(ss, country, ',');
+
+    //get cpga separated by comma, and convert string to float
+    getline(ss, s_cgpa, ',');
+    cgpa = atof(s_cgpa.c_str());
+    
+    //get researchScore separated by comma, and convert it to int
+    getline(ss, s_researchScore, ',');
+    researchScore = atoi(s_researchScore.c_str());
+
+    getline(ss, s_reading, ',');
+    reading = atoi(s_reading.c_str());
+
+    getline(ss, s_listening, ',');
+    listening = atoi(s_listening.c_str());
+
+    getline(ss, s_speaking, ',');
+    speaking = atoi(s_speaking.c_str());
+
+    getline(ss, s_writing, ',');
+    writing = atoi(s_writing.c_str());
+
+    TOEFLScore.set(reading, listening, speaking, writing);
+
+    //print the student info to the screen
+    cout << "International student " << stu_count << " " << firstName << " " 
+	 << lastName << " from " << country << " province has cgpa of "
+	 << cgpa << ", and research score of " << researchScore << endl;
+    I_Student[i].set(firstName, lastName, country, cgpa, researchScore, TOEFLScore, studentNumber);
+
+    studentNumber++;
+    stu_count++;
+    i++;
+  }
+
+
   return 0;
 }
-int stuff;
