@@ -34,8 +34,6 @@ int main(){
    */
   int stu_count = 1;
   int studentNumber = 20200000;
-  int i = 0;
-  DomesticStudent D_Student[2];
   while( getline(domesticFile, line) ) {
     /*process each line, get each field separated by a comma.
      *We use istringstream to handle it.
@@ -70,12 +68,9 @@ int main(){
     cout << "Domestic student " << stu_count << " " << firstName << " " 
 	 << lastName << " from " << province << " province has cgpa of "
 	 << cgpa << ", and research score of " << researchScore << endl;
-
-    D_Student[i].set(firstName, lastName, province, cgpa, researchScore, studentNumber);
-
-    studentNumber++;
-    stu_count++;
-    i++;
+  
+  stu_count++;
+  studentNumber++;
   }
   //close your file
   domesticFile.close();
@@ -87,10 +82,11 @@ int main(){
     return -1;
   }
   
-  InternationalStudent I_Student[2];
-  stu_count = 0;
-  i = 0;
-  
+  getline(internationalFile, line);
+  cout << "File format: " << line << endl;
+
+  stu_count = 1;
+
   while(getline(internationalFile, line))
   {
     istringstream ss(line);
@@ -134,12 +130,13 @@ int main(){
     //print the student info to the screen
     cout << "International student " << stu_count << " " << firstName << " " 
 	 << lastName << " from " << country << " province has cgpa of "
-	 << cgpa << ", and research score of " << researchScore << endl;
-    I_Student[i].set(firstName, lastName, country, cgpa, researchScore, TOEFLScore, studentNumber);
+	 << cgpa << ", and research score of " << researchScore << endl
+   << "Their TOEFL Scores are: reading = " << TOEFLScore.getReading()
+   << ", listening = " << TOEFLScore.getListening() << ", speaking = "
+   << TOEFLScore.getSpeaking() << ", writing = " << TOEFLScore.getWriting() << endl;
 
-    studentNumber++;
     stu_count++;
-    i++;
+    studentNumber++;
   }
 
 
