@@ -21,7 +21,7 @@ Student::Student(string FirstName, string LastName, float Cgpa, int ResearchScor
     studentId = StudentId;
 }
 
-Student::Student() : firstName(NULL), lastName(NULL), cgpa(-1), researchScore(-1), studentId(-1) {/*intentionally empty*/};
+Student::Student() : firstName("NULL"), lastName("NULL"), cgpa(-1), researchScore(-1), studentId(-1) {/*intentionally empty*/};
 
 void Student::set(string FirstName, string LastName, float Cgpa, int ResearchScore, int StudentId)
 {
@@ -75,7 +75,7 @@ DomesticStudent::DomesticStudent(string FirstName, string LastName, string Provi
     province = Province;
 };
 
-DomesticStudent::DomesticStudent() : Student(), province(NULL) { /*intentionally empty*/ };
+DomesticStudent::DomesticStudent() : Student(), province("NULL") { /*intentionally empty*/ };
 
 void DomesticStudent::set(string FirstName, string LastName, string Province, float Cgpa, int ResearchScore, int StudentId)
 {
@@ -120,22 +120,22 @@ ToeflScore::ToeflScore() : reading(0), listening(0), speaking(0), writing(0) {/*
 
 void ToeflScore::set(int Reading, int Listening, int Speaking, int Writing)
 {
-    if (reading < 0 || reading > 30)
+    if (Reading < 0 || Reading > 30)
     {
         cout << "Illegal values for TOEFL Reading score inputted. Exiting program\n";
         exit(1);
     }
-    if (listening < 0 || listening > 30)
+    if (Listening < 0 || Listening > 30)
     {
         cout << "Illegal values for TOEFL Listening score inputted. Exiting program\n";
         exit(1);
     }
-    if (speaking < 0 || speaking > 30)
+    if (Speaking < 0 || Speaking > 30)
     {
         cout << "Illegal values for TOEFL Speaking score inputted. Exiting program\n";
         exit(1);
     }
-    if (writing < 0 || writing > 30)
+    if (Writing < 0 || Writing > 30)
     {
         cout << "Illegal values for TOEFL Writing score inputted. Exiting program\n";
         exit(1);
@@ -177,7 +177,7 @@ InternationalStudent::InternationalStudent(string FirstName, string LastName, st
     country = Country;
 }
 
-InternationalStudent::InternationalStudent() : Student(), country(NULL)
+InternationalStudent::InternationalStudent() : Student(), country("NULL")
 {
     toeflScore.set(-1, -1, -1, -1);
 }

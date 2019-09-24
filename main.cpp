@@ -34,6 +34,7 @@ int main(){
    */
   int stu_count = 1;
   int studentNumber = 20200000;
+  DomesticStudent D_Student;
   while( getline(domesticFile, line) ) {
     /*process each line, get each field separated by a comma.
      *We use istringstream to handle it.
@@ -64,13 +65,17 @@ int main(){
     getline(ss, s_researchScore, ',');
     researchScore = atoi(s_researchScore.c_str());
 
+    D_Student.set(firstName, lastName, province, cgpa, researchScore, studentNumber);
+
     //print the student info to the screen
-    cout << "Domestic student " << stu_count << " " << firstName << " " 
-	 << lastName << " from " << province << " province has cgpa of "
-	 << cgpa << ", and research score of " << researchScore << endl;
+    cout << "Domestic student " << stu_count << " " << D_Student.getFirstName() << " " 
+	 << D_Student.getLastName() << " from " << D_Student.getProvince() << " province has cgpa of "
+	 << D_Student.getCgpa() << ", and research score of " << D_Student.getResearchScore() 
+   << ". Assigned Student ID: " << D_Student.getStudentId() << endl;
   
   stu_count++;
   studentNumber++;
+  
   }
   //close your file
   domesticFile.close();
@@ -86,6 +91,8 @@ int main(){
   cout << "File format: " << line << endl;
 
   stu_count = 1;
+  InternationalStudent I_Student;
+  ToeflScore TOEFLScore;
 
   while(getline(internationalFile, line))
   {
@@ -94,7 +101,6 @@ int main(){
     string firstName, lastName, country, s_cgpa, s_researchScore, s_reading, s_listening, s_speaking, s_writing;
     float cgpa;
     int researchScore, reading, listening, speaking, writing;
-    ToeflScore TOEFLScore;
 
     //get firstName separated by comma
     getline(ss, firstName, ',');
@@ -126,19 +132,21 @@ int main(){
     writing = atoi(s_writing.c_str());
 
     TOEFLScore.set(reading, listening, speaking, writing);
+    I_Student.set(firstName, lastName, country, cgpa, researchScore, TOEFLScore, studentNumber);
 
     //print the student info to the screen
-    cout << "International student " << stu_count << " " << firstName << " " 
-	 << lastName << " from " << country << " province has cgpa of "
-	 << cgpa << ", and research score of " << researchScore << endl
-   << "Their TOEFL Scores are: reading = " << TOEFLScore.getReading()
-   << ", listening = " << TOEFLScore.getListening() << ", speaking = "
-   << TOEFLScore.getSpeaking() << ", writing = " << TOEFLScore.getWriting() << endl;
+    cout << "International student " << stu_count << " " << I_Student.getFirstName() << " " 
+	 << I_Student.getLastName() << " from " << I_Student.getCountry() << " has cgpa of "
+	 << I_Student.getCgpa() << ", and research score of " << I_Student.getResearchScore() 
+   << ". Assigned Student ID: " << I_Student.getStudentId() << endl
+   << "Their TOEFL Scores are: reading = " << I_Student.getToeflScore().getReading()
+   << ", listening = " << I_Student.getToeflScore().getListening() << ", speaking = "
+   << I_Student.getToeflScore().getSpeaking() << ", writing = " << I_Student.getToeflScore().getWriting() << endl;
 
     stu_count++;
     studentNumber++;
   }
-
+  internationalFile.close();
 
   return 0;
 }
