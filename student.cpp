@@ -1,6 +1,7 @@
 //student.cpp to implement your classes
 #include "student.hpp"
 #include <iostream>
+#include <cstdlib>
 
 Student::Student(string FirstName, string LastName, float Cgpa, int ResearchScore, int StudentId)
 {
@@ -21,7 +22,7 @@ Student::Student(string FirstName, string LastName, float Cgpa, int ResearchScor
     studentId = StudentId;
 }
 
-Student::Student() : firstName("NULL"), lastName("NULL"), cgpa(-1), researchScore(-1), studentId(-1) {/*intentionally empty*/};
+Student::Student() : firstName("NULL"), lastName("NULL"), cgpa(0), researchScore(0), studentId(0) {/*intentionally empty*/};
 
 void Student::set(string FirstName, string LastName, float Cgpa, int ResearchScore, int StudentId)
 {
@@ -88,38 +89,14 @@ string DomesticStudent::getProvince()
     return province;
 }
 
+ToeflScore::ToeflScore() : reading(0), listening(0), speaking(0), writing(0) {/*intentionally empty*/};
+
 ToeflScore::ToeflScore(int Reading, int Listening, int Speaking, int Writing)
 {
-    if (reading < 0 || reading > 30)
-    {
-        cout << "Illegal values for TOEFL Reading score inputted. Exiting program\n";
-        exit(1);
-    }
-    if (listening < 0 || listening > 30)
-    {
-        cout << "Illegal values for TOEFL Listening score inputted. Exiting program\n";
-        exit(1);
-    }
-    if (speaking < 0 || speaking > 30)
-    {
-        cout << "Illegal values for TOEFL Speaking score inputted. Exiting program\n";
-        exit(1);
-    }
-    if (writing < 0 || writing > 30)
-    {
-        cout << "Illegal values for TOEFL Writing score inputted. Exiting program\n";
-        exit(1);
-    }
     reading = Reading;
     listening = Listening;
     speaking = Speaking;
     writing = Writing;
-}
-
-ToeflScore::ToeflScore() : reading(0), listening(0), speaking(0), writing(0) {/*intentionally empty*/};
-
-void ToeflScore::set(int Reading, int Listening, int Speaking, int Writing)
-{
     if (Reading < 0 || Reading > 30)
     {
         cout << "Illegal values for TOEFL Reading score inputted. Exiting program\n";
@@ -140,10 +117,34 @@ void ToeflScore::set(int Reading, int Listening, int Speaking, int Writing)
         cout << "Illegal values for TOEFL Writing score inputted. Exiting program\n";
         exit(1);
     }
+}
+
+void ToeflScore::set(int Reading, int Listening, int Speaking, int Writing)
+{
     reading = Reading;
     listening = Listening;
     speaking = Speaking;
     writing = Writing;
+    if (reading < 0 || reading > 30)
+    {
+        cout << "Illegal values for TOEFL Reading score inputted. Exiting program\n";
+        exit(1);
+    }
+    if (listening < 0 || listening > 30)
+    {
+        cout << "Illegal values for TOEFL Listening score inputted. Exiting program\n";
+        exit(1);
+    }
+    if (speaking < 0 || speaking > 30)
+    {
+        cout << "Illegal values for TOEFL Speaking score inputted. Exiting program\n";
+        exit(1);
+    }
+    if (writing < 0 || writing > 30)
+    {
+        cout << "Illegal values for TOEFL Writing score inputted. Exiting program\n";
+        exit(1);
+    }
 }
 
 int ToeflScore::getReading()
@@ -179,7 +180,7 @@ InternationalStudent::InternationalStudent(string FirstName, string LastName, st
 
 InternationalStudent::InternationalStudent() : Student(), country("NULL")
 {
-    toeflScore.set(-1, -1, -1, -1);
+    toeflScore.set(0, 0, 0, 0);
 }
 
 void InternationalStudent::set(string FirstName, string LastName, string Country, float Cgpa, int ResearchScore, ToeflScore TOEFLScore, int StudentId)

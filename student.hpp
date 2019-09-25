@@ -43,8 +43,8 @@ class ToeflScore
     int getListening();
     int getSpeaking();
     int getWriting();
-    private:
     int addScores();
+    private: 
     int reading;
     int listening;
     int speaking;

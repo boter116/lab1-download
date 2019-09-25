@@ -138,10 +138,11 @@ int main(){
     cout << "International student " << stu_count << " " << I_Student.getFirstName() << " " 
 	 << I_Student.getLastName() << " from " << I_Student.getCountry() << " has cgpa of "
 	 << I_Student.getCgpa() << ", and research score of " << I_Student.getResearchScore() 
-   << ". Assigned Student ID: " << I_Student.getStudentId() << endl
-   << "Their TOEFL Scores are: reading = " << I_Student.getToeflScore().getReading()
-   << ", listening = " << I_Student.getToeflScore().getListening() << ", speaking = "
-   << I_Student.getToeflScore().getSpeaking() << ", writing = " << I_Student.getToeflScore().getWriting() << endl;
+	 << ". Assigned Student ID: " << I_Student.getStudentId() << endl
+	 << "Their TOEFL Scores are: reading = " << I_Student.getToeflScore().getReading()
+	 << ", listening = " << I_Student.getToeflScore().getListening() << ", speaking = "
+	 << I_Student.getToeflScore().getSpeaking() << ", writing = " << I_Student.getToeflScore().getWriting()
+         << "\n" << "Total TOEFL Score = " << I_Student.getToeflScore().addScores() << endl;
 
     stu_count++;
     studentNumber++;
