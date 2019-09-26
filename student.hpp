@@ -39,11 +39,11 @@ class ToeflScore
     ToeflScore(int Reading, int Listening, int Speaking, int Writing);
     ToeflScore();
     void set(int Reading, int Listening, int Speaking, int Writing);
-    int getReading();        
-    int getListening();
-    int getSpeaking();
-    int getWriting();
-    int addScores();
+    int getReading();   //Intialize get function for reading int variable     
+    int getListening(); //Intialize get function for listening int variable
+    int getSpeaking();  //intialize get function for speaking int variable
+    int getWriting();   //Initialize get funtion for writing int variable
+    int addScores();    //Intialize get function for adding the sum of scores to a int varable
     private: 
     int reading;    //reading score int variable
     int listening;  //listening score int variable
