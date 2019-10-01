@@ -1,3 +1,4 @@
 FirstName,LastName,Province,CGPA,ResearchScore
+John,Snow,QB,3.8,87
 Mary,White,BC,4,85
 Mike,Hwang,ON,3.7,90
